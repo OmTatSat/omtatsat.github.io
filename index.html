@@ -828,22 +828,17 @@ image.parentElement.classList.remove("timer1");
   let container = timer1El.closest('.image0-container.active'); // Попытка найти ближайший элемент с классом image0-container и active
 
 
-OneSignal.push(function() {
-  /* Отправка уведомления с помощью OneSignal */
-  OneSignal.sendSelfNotification(
-    /* Заголовок уведомления */
-    "Заголовок",
-    /* Содержание уведомления */
-    "Содержание",
-    /* URL при нажатии на уведомление */
-    'https://example.com',
-    /* Иконка уведомления */
-    'https://example.com/favicon.ico',
-    {
-      // Дополнительные параметры
-    },
-    { /* Опции */ }
-  );
+fetch('https://onesignal.com/api/v1/notifications', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic ZTUzNGY2MTYtZTM1YS00NjcxLWFmYTgtNGU5YTVlYTY0MTRj'
+  },
+  body: JSON.stringify({
+    app_id: '154e3f78-cc9b-4ff0-9f92-491625d32340',
+    contents: { 'en': 'Сообщение в уведомлении Надика' },
+    included_segments: ['All']
+  })
 });
 
 
@@ -888,6 +883,21 @@ let tit = breakString(text, 40); // перенос на новую строку 
   var notification = new Notification("Новая Надика", {
                 body: tit 
             });
+
+fetch('https://onesignal.com/api/v1/notifications', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic ZTUzNGY2MTYtZTM1YS00NjcxLWFmYTgtNGU5YTVlYTY0MTRj'
+  },
+  body: JSON.stringify({
+    app_id: '154e3f78-cc9b-4ff0-9f92-491625d32340',
+    contents: { 'en': tit },
+    included_segments: ['All']
+  })
+});
+
+	
 } else {
   console.log("Элемент не найден");
 }
