@@ -644,7 +644,11 @@ Notification.requestPermission().then(function (permission) {
     });
 
     document.addEventListener("DOMContentLoaded", function() {
-	
+	OneSignal.push(function() {
+  OneSignal.sendNotification({
+    message: "Тестовое уведомление",
+  });
+});
         const firstImage = document.querySelector(".image-clickable img");
         const imageContainers = document.querySelectorAll(".image-clickable img");
 
