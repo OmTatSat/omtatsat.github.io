@@ -895,7 +895,7 @@ const imagetextElement = document.querySelector(".image0-container.active .image
 
 if (imagetextElement) {
   // Получить текст из элемента
-  const text = imagetextElement.textContent;
+  let text = imagetextElement.textContent;
   // Удалить переносы строк
   text = text.replace(/ /g, '\u00A0');
 let tit = breakString(text, 40); // перенос на новую строку через 40 символов
