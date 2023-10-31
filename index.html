@@ -829,21 +829,21 @@ image.parentElement.classList.remove("timer1");
 
 
 OneSignal.push(function() {
-  OneSignal.getUserId(function(userId) {
-    if (userId) {
-      // Успешно получили идентификатор пользователя (userId)
-      console.log("User ID:", userId);
-
-      // Отправка уведомления
-      OneSignal.sendNotification({
-        contents: { 'ru': 'Текст уведомления тест надика' },
-        include_player_ids: [userId], // Отправить уведомление этому пользователю
-        data: { 'key1': 'value1', 'key2': 'value2' } // Дополнительные данные
-      });
-    } else {
-      console.log("User ID не доступен");
-    }
-  });
+  /* Отправка уведомления с помощью OneSignal */
+  OneSignal.sendSelfNotification(
+    /* Заголовок уведомления */
+    "Заголовок",
+    /* Содержание уведомления */
+    "Содержание",
+    /* URL при нажатии на уведомление */
+    'https://example.com',
+    /* Иконка уведомления */
+    'https://example.com/favicon.ico',
+    {
+      // Дополнительные параметры
+    },
+    { /* Опции */ }
+  );
 });
 
 
