@@ -819,53 +819,7 @@ image.parentElement.classList.remove("timer1");
   let container = timer1El.closest('.image0-container.active'); // Попытка найти ближайший элемент с классом image0-container и active
 
 
-let audio = document.getElementById('myAudio');
 
-// Воспроизведите аудио
-audio.play();
-	  timer1 = Math.floor((seconds1/60) + 24);
-  console.log("active1 данные timer1 if:", timer1);
-  timer1El.remove();
-  console.log("active1 уничтожен timer1 if:", timer1);
-  // создаем элемент для таймера
-  timer1El = document.createElement('span');
-  console.log("active1 создание timer1:", timer1El);
-  timer1El.classList.add('timer1');
-  image.parentNode.appendChild(timer1El);
-if ("Notification" in window) {
-    // Проверка поддержки уведомлений
-    Notification.requestPermission().then(function (permission) {
-        if (permission === "granted") {
-            // Уведомление разрешено
-			
-			// Получить элемент .image0-container.active .imagetext
-const imagetextElement = document.querySelector(".image0-container.active .imagetext");
-
-if (imagetextElement) {
-  // Получить текст из элемента
-  let text = imagetextElement.textContent;
-  // Удалить переносы строк
-  text = text.replace(/ /g, '\u00A0');
-let tit = breakString(text, 40); // перенос на новую строку через 40 символов
-  
-  console.log("Текст из .image0-container.active .imagetext:", text);
-  var notification = new Notification("Новая Надика", {
-                body: tit 
-            });
-} else {
-  console.log("Элемент не найден");
-}
-
-			
-            
-
-            notification.onclick = function () {
-                // Обработчик клика на уведомление
-                // Можете выполнить здесь действие по клику
-            };
-        }
-    });
-}
 
   
     if (container) {
