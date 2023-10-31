@@ -828,6 +828,23 @@ image.parentElement.classList.remove("timer1");
   let container = timer1El.closest('.image0-container.active'); // Попытка найти ближайший элемент с классом image0-container и active
 
 
+OneSignal.push(function() {
+  OneSignal.getUserId(function(userId) {
+    if (userId) {
+      // Успешно получили идентификатор пользователя (userId)
+      console.log("User ID:", userId);
+
+      // Отправка уведомления
+      OneSignal.sendNotification({
+        contents: { 'ru': 'Текст уведомления тест надика' },
+        include_player_ids: [userId], // Отправить уведомление этому пользователю
+        data: { 'key1': 'value1', 'key2': 'value2' } // Дополнительные данные
+      });
+    } else {
+      console.log("User ID не доступен");
+    }
+  });
+});
 
 
   
