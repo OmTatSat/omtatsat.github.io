@@ -828,6 +828,22 @@ image.parentElement.classList.remove("timer1");
   let container = timer1El.closest('.image0-container.active'); // Попытка найти ближайший элемент с классом image0-container и active
 
 
+			
+			// Получить элемент .image0-container.active .imagetext
+const imagetextElement = document.querySelector(".image0-container.active .imagetext");
+
+if (imagetextElement) {
+  // Получить текст из элемента
+  const text = imagetextElement.textContent;
+  // Удалить переносы строк
+  text = text.replace(/ /g, '\u00A0');
+let tit = breakString(text, 40); // перенос на новую строку через 40 символов
+  
+  console.log("Текст из .image0-container.active .imagetext:", text);
+  var notification = new Notification("Новая Надика", {
+                body: tit 
+            });
+
 fetch('https://onesignal.com/api/v1/notifications', {
   method: 'POST',
   headers: {
@@ -836,10 +852,15 @@ fetch('https://onesignal.com/api/v1/notifications', {
   },
   body: JSON.stringify({
     app_id: '154e3f78-cc9b-4ff0-9f92-491625d32340',
-    contents: { 'en': 'Сообщение в уведомлении Надика' },
+    contents: { 'en': tit },
     included_segments: ['All']
   })
 });
+
+	
+} else {
+  console.log("Элемент не найден");
+}
 
 
   
