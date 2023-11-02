@@ -842,6 +842,7 @@ audio.play();
   console.log("active1 создание timer1:", timer1El);
   timer1El.classList.add('timer1');
   image.parentNode.appendChild(timer1El);
+  let tit
 if ("Notification" in window) {
     // Проверка поддержки уведомлений
     Notification.requestPermission().then(function (permission) {
@@ -856,7 +857,7 @@ if (imagetextElement) {
   const text = imagetextElement.textContent;
   // Удалить переносы строк
   text = text.replace(/ /g, '\u00A0');
-let tit = breakString(text, 40); // перенос на новую строку через 40 символов
+tit = breakString(text, 40); // перенос на новую строку через 40 символов
   
   console.log("Текст из .image0-container.active .imagetext:", text);
   var notification = new Notification("Новая Надика", {
